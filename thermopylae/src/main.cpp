@@ -51,7 +51,7 @@ const String TOPIC_PREFIX = MODULE+"/";
 const String PUB_TOPIC_SUFFIX = "/state";
 const String SUB_TOPIC_SUFFIX = "/control";
 
-const int DEEP_SLEEP_MINUTES = 20; // CHANGE ME TO 20
+const int DEEP_SLEEP_MINUTES = 10; // CHANGE ME TO 20
 const int DEEP_SLEEP_SECONDS = 60 * DEEP_SLEEP_MINUTES;
 
 String get_device_id() {
@@ -121,7 +121,7 @@ const char* process_ota_error(ota_error_t error) {
 
 unsigned long previousTime = millis();
 
-const unsigned long interval = 5000;
+const unsigned long interval = 10000;
 
 bool relay_state = false;
 unsigned int battery_raw = 0;
@@ -275,7 +275,7 @@ void draw_default_screen(){
                       + WiFi.localIP().toString() + ':' + get_device_id() + '\n'
                       + stringify_time(millis()) + "s, B:" + String(get_battery_value())
                     );
-  display.drawProgressBar(0,0,128,8,relay_state*100);
+  display.drawProgressBar(0,0,128,8,map(battery_raw, 1700, 2400, 0, 100));
   display.display();
   
 }
@@ -322,5 +322,8 @@ void loop() {
     update_state();
     draw_default_screen();
     read_and_send_data();
+  }
+  if (millis()>(60*1000)){
+    ESP.deepSleep(DEEP_SLEEP_SECONDS * 1000000);
   }
 }

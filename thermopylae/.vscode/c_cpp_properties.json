@@ -223,7 +223,7 @@
                 ]
             },
             "defines": [
-                "PLATFORMIO=40304",
+                "PLATFORMIO=40305",
                 "ARDUINO_HELTEC_WIFI_KIT_32",
                 "WIFI_PASS=\"ucaeMJfXvDc3\"",
                 "WIFI_SSID=\"BTHub6-6Z36\"",
@@ -243,7 +243,7 @@
             "intelliSenseMode": "clang-x64",
             "cStandard": "c99",
             "cppStandard": "c++11",
-            "compilerPath": "C:/Users/me/.platformio/packages/toolchain-xtensa32@2.50200.80/bin/xtensa-esp32-elf-gcc.exe",
+            "compilerPath": "C:/Users/me/.platformio/packages/toolchain-xtensa32/bin/xtensa-esp32-elf-gcc.exe",
             "compilerArgs": [
                 "-mlongcalls",
                 ""
